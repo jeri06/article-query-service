@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Shopify/sarama"
 	"github.com/jeri06/article-query-service/entity"
 	"github.com/jeri06/article-query-service/exception"
 	"github.com/jeri06/article-query-service/model"
@@ -28,7 +27,6 @@ type usecase struct {
 	utcLoc      *time.Location
 	logger      *logrus.Logger
 	repository  Repository
-	pubsub      sarama.SyncProducer
 }
 
 func NewArticleUsecase(property UsecaseProperty) Usecase {
@@ -37,7 +35,6 @@ func NewArticleUsecase(property UsecaseProperty) Usecase {
 		utcLoc:      property.UTCLoc,
 		logger:      property.Logger,
 		repository:  property.Repository,
-		pubsub:      property.Publisher,
 	}
 }
 
